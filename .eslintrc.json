@@ -5,7 +5,12 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:import/typescript", // this is needed because airbnb uses eslint-plugin-import
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "prettier/@typescript-eslint",
+        "prettier/react"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -20,15 +25,27 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "react/jsx-filename-extension": [
+        "import/extensions": [
+            "error",
+            "ignorePackages",
             {
-                "extensions": [
-                    ".js",
-                    ".jsx",
-                    ".ts",
-                    ".tsx"
-                ]
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
             }
+        ],
+        "react/jsx-filename-extension": "off",
+        "jsx-a11y/anchor-is-valid":"off",
+        "react/self-closing-comp":"off"
+    },
+    "settings": {
+        "import/extensions": [
+            ".js",
+            ".mjs",
+            ".jsx",
+            ".ts",
+            ".tsx"
         ]
     }
 }
